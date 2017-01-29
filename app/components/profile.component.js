@@ -12,15 +12,19 @@ var core_1 = require('@angular/core');
 var github_service_1 = require('../services/github.service');
 var ProfileComponent = (function () {
     function ProfileComponent(_githubService) {
-        var _this = this;
         this._githubService = _githubService;
+        this.user = false;
+    }
+    ProfileComponent.prototype.searchUser = function () {
+        var _this = this;
+        this._githubService.updateUser(this.username);
         this._githubService.getUser().subscribe(function (user) {
             _this.user = user;
         });
         this._githubService.getRepos().subscribe(function (repos) {
             _this.repos = repos;
         });
-    }
+    };
     ProfileComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
