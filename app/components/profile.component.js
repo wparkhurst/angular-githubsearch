@@ -16,7 +16,9 @@ var ProfileComponent = (function () {
         this._githubService = _githubService;
         this._githubService.getUser().subscribe(function (user) {
             _this.user = user;
-            console.log(user);
+        });
+        this._githubService.getRepos().subscribe(function (repos) {
+            _this.repos = repos;
         });
     }
     ProfileComponent = __decorate([
